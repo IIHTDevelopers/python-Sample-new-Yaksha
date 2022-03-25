@@ -31,10 +31,12 @@ class TestUtils:
         test_case_result_dto.isMandatory = True
         test_case_result_dto.erroMessage = ""
 
-        test_case_results[self.GUID] = test_case_result_dto
+        test_case_results[self.GUID] = test_case_result_dto.toJSON()
         test_results.testCaseResults = json.dumps(test_case_results)
+        #test_results.testCaseResults = test_case_results.toJSON()
         test_results.customData = customData
 
-        final_result = json.dumps(test_results)
-
+        #final_result = json.dumps(test_results)
+        final_result = test_results.toJSON()
+        #print(final_result)
         requests.post(self.URL, json=final_result)
