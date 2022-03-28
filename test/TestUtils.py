@@ -32,11 +32,18 @@ class TestUtils:
         test_case_result_dto.erroMessage = ""
 
         test_case_results[self.GUID] = test_case_result_dto.toJSON()
-        test_results.testCaseResults = json.dumps(test_case_results)
+        #print("TEST CASE RESULT DTO")
+        #print(test_case_results[self.GUID])
+        str = json.dumps(test_case_results)
+        test_results.testCaseResults = str.replace('\\', ' ')
+        #print("DICTIONARY")
+
+        #print(test_results.testCaseResults)
         #test_results.testCaseResults = test_case_results.toJSON()
         test_results.customData = customData
 
         #final_result = json.dumps(test_results)
         final_result = test_results.toJSON()
+        #print("FINAL")
         #print(final_result)
         requests.post(self.URL, json=final_result)
