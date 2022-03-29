@@ -35,7 +35,7 @@ class TestUtils:
         #print("TEST CASE RESULT DTO")
         #print(test_case_results[self.GUID])
         str = json.dumps(test_case_results)
-        test_results.testCaseResults = str.replace('\\', ' ')
+        test_results.testCaseResults = str.replace('\\', '')
         #print("DICTIONARY")
 
         #print(test_results.testCaseResults)
@@ -45,5 +45,6 @@ class TestUtils:
         #final_result = json.dumps(test_results)
         final_result = test_results.toJSON()
         #print("FINAL")
-        #print(final_result)
+        final_result = final_result.replace('\\', '')
+        # print(final_result)
         requests.post(self.URL, json=final_result)
