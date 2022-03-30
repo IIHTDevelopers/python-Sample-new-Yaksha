@@ -1,5 +1,5 @@
 import json
-class TestCaseResultDto:
+class TestCaseResultDto(dict):
     methodName = ""
     methodType = ""
     actualScore = 0
@@ -8,6 +8,9 @@ class TestCaseResultDto:
     isMandatory = True
     erroMessage = ""
 
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__,
-                          sort_keys=True)
+    def __init__(self, methodName, methodType, actualScore, earnedScore, status, isMandatory, erroMessage):
+        dict.__init__(self, methodName = methodName, methodType = methodType, actualScore = actualScore, earnedScore = earnedScore, status = status, isMandatory = isMandatory, erroMessage = erroMessage)
+
+    #def toJSON(self):
+    #    return json.dumps(self, default=lambda o: o.__dict__,
+    #                      sort_keys=True)

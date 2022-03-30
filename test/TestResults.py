@@ -1,8 +1,10 @@
 import json
-class TestResults:
+class TestResults(dict):
     testCaseResults = ""
     customData = ""
 
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__,
-                          sort_keys=True)
+    def __init__(self, testCaseResults, customData):
+        dict.__init__(self, testCaseResults = testCaseResults, customData = customData)
+    #def toJSON(self):
+    #    return json.dumps(self, default=lambda o: o.__dict__,
+    #                      sort_keys=True)
