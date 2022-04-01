@@ -49,4 +49,4 @@ class TestUtils:
         #print("FINAL")
         #final_result = final_result.replace('\\', '')
         # print(final_result)
-        requests.post(self.URL, json=final_result)
+        requests.post(self.URL, final_result)
